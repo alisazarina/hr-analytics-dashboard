@@ -7,6 +7,8 @@
 > Option C: Exploring what drives employee turnover and hiring costs — an HR analytics dashboard built from a cleaned Kaggle dataset using Power BI.
 > -->
 
+<img width="1325" height="743" alt="HR Analytics Dashboard (main view)" src="https://github.com/user-attachments/assets/6e4b9d73-4b51-4145-91f4-a2debefec7fd" />
+
 ---
 
 ## 📌 Overview
@@ -77,7 +79,7 @@ DIVIDE(
 ## 🗂️ Repository Structure
 
 ```
-📁 workforce-performance-dashboard/
+📁 hr-analytics-dashboard/
 ├── 📄 README.md
 ├── 📊 HR_Analytics.pbix          ← Power BI report file
 ├── 📄 HR_Analytics.pdf           ← Static PDF export
