@@ -1,21 +1,55 @@
 # 🧑‍💼 Workforce Performance & Efficiency Dashboard
 ### HR Analytics | Power BI
 
+![Dashboard Preview](screenshots/HR_Analytics_Screenshot1.png)
+
 > <!-- PICK ONE AND DELETE THE REST:
 > Option A: HR analytics dashboard tracking workforce turnover, hiring efficiency, and employee engagement across departments — built with Power BI and DAX.
 > Option B: End-to-end HR analytics project covering data cleaning, DAX modelling, and interactive dashboard development in Power BI.
 > Option C: Exploring what drives employee turnover and hiring costs — an HR analytics dashboard built from a cleaned Kaggle dataset using Power BI.
 > -->
 
-<img width="1325" height="743" alt="HR Analytics Dashboard (main view)" src="https://github.com/user-attachments/assets/6e4b9d73-4b51-4145-91f4-a2debefec7fd" />
-
 ---
 
 ## 📌 Overview
 
-This dashboard provides HR stakeholders with a centralised view of key workforce metrics — from headcount and turnover trends to recruitment cost and employee satisfaction — enabling data-driven decisions around talent management and organisational efficiency.
+This is an end-to-end HR analytics project — from raw data cleaning in Python to exploratory analysis and interactive dashboard development in Power BI. It provides HR stakeholders with a centralised view of key workforce metrics, enabling data-driven decisions around talent management, hiring efficiency, and employee engagement.
 
-The dataset is sourced from **Kaggle** (open source HR analytics dataset), cleaned and transformed in Power Query prior to visualisation.
+The dataset used is **HRDataset_v14** — an open source HR analytics dataset from Kaggle (`cleaned_hr_data.csv`).
+
+---
+
+## 🔄 Project Workflow
+
+```
+Raw CSV (Kaggle)  →  Python Cleaning (Google Colab)  →  EDA  →  Power BI Dashboard
+```
+
+---
+
+## 🧹 Data Cleaning (Python — Google Colab)
+
+Cleaned the raw `HRDataset_v14.csv` using **pandas** before loading into Power BI. Steps included:
+
+| Step | Detail |
+|---|---|
+| **Missing values** | `DateofTermination` nulls retained (indicates active employees); `ManagerID` nulls filled with `-1` placeholder |
+| **Date parsing** | Converted `DOB`, `DateofHire`, `DateofTermination`, `LastPerformanceReview_Date` to datetime |
+| **Logical date checks** | Flagged future DOBs, future hire dates, termination dates before hire date |
+| **Consistency checks** | Validated `MaritalStatusID` vs `MaritalDesc`, `GenderID` vs `Sex`, `PerfScoreID` vs `PerformanceScore` |
+| **Categorical cleaning** | Stripped whitespace from `Sex`, capitalised `HispanicLatino`, corrected performance score mismatches |
+| **Feature engineering** | Created `TermCategory` column — categorised `TermReason` into `Voluntary`, `Involuntary`, `Still Employed` |
+| **Export** | Saved cleaned output as `cleaned_hr_data.csv` |
+
+---
+
+## 🔍 EDA Key Findings (Python)
+
+- Salary distribution is right-skewed — most employees fall in lower-to-mid salary ranges
+- Employees with higher performance scores (`Exceeds`, `Exceptional`) tend to have higher median salaries
+- Positive correlation found between `EngagementSurvey` and `EmpSatisfaction` scores
+- Among terminated employees, **voluntary exits** (another position, more money, career change) outnumber involuntary ones
+- **Indeed** and **LinkedIn** are the dominant recruitment sources
 
 ---
 
@@ -30,26 +64,26 @@ The dataset is sourced from **Kaggle** (open source HR analytics dataset), clean
 
 ---
 
-## 🔍 Key Insights
+## 💡 Dashboard Key Insights
 
 - **33.44% turnover rate** signals a retention challenge worth investigating at department level
 - **Software Engineering** and **IT/IS** departments show the highest average revenue per employee
 - **Indeed and LinkedIn** are the top recruitment sources by volume
-- **Executive Operations** has the highest cost-per-hire at ~RM8.05K (20.15% of total)
+- **Executive Operations** has the highest cost-per-hire at ~$8.05K (20.15% of total)
 - Average employee satisfaction sits at **3.89 / 5** — room for engagement improvement
 
 ---
 
 ## 🛠️ Tools & Technologies
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
-![Power Query](https://img.shields.io/badge/Power%20Query-217346?style=for-the-badge&logo=microsoft&logoColor=white)
 
-- **Power BI Desktop** — report development and data modelling
-- **DAX** — custom measures for headcount, turnover, hiring efficiency metrics
-- **Power Query** — data cleaning and transformation
-- **Dataset** — Open source HR analytics dataset from Kaggle (`cleaned_hr_data`)
+- **Python (Google Colab)** — data cleaning, EDA, and feature engineering using `pandas`, `matplotlib`, `seaborn`
+- **Power BI Desktop** — data modelling and report development
+- **DAX** — custom measures for headcount, turnover rate, hiring efficiency metrics
 
 ---
 
@@ -79,20 +113,25 @@ DIVIDE(
 ## 🗂️ Repository Structure
 
 ```
-📁 hr-analytics-dashboard/
+📁 workforce-performance-dashboard/
 ├── 📄 README.md
-├── 📊 HR_Analytics.pbix          ← Power BI report file
-├── 📄 HR_Analytics.pdf           ← Static PDF export
+├── 📓 Workforce_Performance_HR_Analytics.ipynb   ← Python cleaning & EDA notebook
+├── 📊 HR_Analytics.pbix                          ← Power BI report file
+├── 📄 HR_Analytics.pdf                           ← Static PDF export
 └── 📁 screenshots/
-    └── HR_Analytics_Screenshot1.png
+    └── HR_Analytics_Screenshot1.png              ← Shows default (main) dashboard
+    └── HR_Analytics_Screenshot2F.png             ← Dashboard view filtered by gender (female)
+    └── HR_Analytics_Screenshot2FV.png            ← Dashboard view filtered by gender (female) and employment status (terminated for cause)
+    └── HR_Analytics_Screenshot3AP_showall.png    ← Dashboard view filtered by gender (male) and department (production)
+
 ```
 
 ---
 
 ## 🚀 How to Use
 
-1. Download `HR_Analytics.pbix`
-2. Open with **Power BI Desktop** (free download at microsoft.com/powerbi)
+1. Open `Workforce_Performance_HR_Analytics.ipynb` in Google Colab to explore the cleaning and EDA steps
+2. Download `HR_Analytics.pbix` and open with **Power BI Desktop** (free at microsoft.com/powerbi)
 3. Explore the report using the slicers — **Employment Status**, **Gender**, **Department** — to filter views
 
 ---
