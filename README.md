@@ -1,5 +1,5 @@
 # 🧑‍💼 Workforce Performance & Efficiency Dashboard
-### HR Analytics | Power BI
+### HR Analytics | Power BI · DAX · Google Colab · Python · Jupyter Notebook 📊
 
 ![Dashboard Preview](screenshots/HR_Analytics_Screenshot1.png)
 
@@ -138,7 +138,7 @@ DIVIDE(
 
 ## 👩‍💻 Author
 
-**Nur Alisa Zarina Binti Nazmi**  
+**Nur Alisa Zarina Binti Nazmi (Alisa Zarina)**  
 Data & Analytics Specialist | BI Developer  
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-linkedin-url)
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/your-github-username)
